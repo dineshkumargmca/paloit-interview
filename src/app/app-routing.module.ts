@@ -1,7 +1,27 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AppComponent } from './app.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    component: AppComponent,
+    path: '',
+    children: [
+      {
+        path: 'recipelist',
+        loadChildren: () => import('./recipes/list/list.module').then(m => m.ListModule)
+      },
+      {
+        path: 'recipedetail',
+        loadChildren: () => import('./recipes/detail/detail.module').then(m => m.DetailModule)
+      },
+      {
+        path: '**',
+        redirectTo: 'recipelist'
+      }
+    ]
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

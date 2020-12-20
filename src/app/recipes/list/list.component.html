@@ -1,0 +1,18 @@
+<div class="p-mx-auto">
+    <div class="card">
+        <p-dataView #dv [value]="recipes" [paginator]="true" [rows]="10" filterBy="title" [lazy]="true"
+            (onLazyLoad)="loadData($event)" (onPage)="paging($event)" [totalRecords]="totalRecords">
+            <ng-template let-product pTemplate="listItem">
+                <div class="p-col-12">
+                    <div class="product-list-item">
+                        <img [src]="product.image" [alt]="product.title" />
+                        <div class="product-list-detail">
+                            <div class="product-name">{{product.title}}</div>
+                            <div class="product-description"><a routerLink="/recipedetail">Click here to view recipe</a></div>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+        </p-dataView>
+    </div>
+</div>
