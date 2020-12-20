@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "paloit-interview"
+  "defaultProject": "paloit-interview",
+  "cli": {
+    "analytics": false
+  }
 }
