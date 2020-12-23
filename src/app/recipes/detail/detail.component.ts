@@ -18,7 +18,7 @@ export class DetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.sub = this.route.params.subscribe(params => {
-      this.id = +params['id'];
+      this.id = params['id'];
       this.getRecipedetail(this.id);
     });
 
