@@ -4,7 +4,6 @@ import { AppComponent } from './app.component';
 
 const routes: Routes = [
   {
-    component: AppComponent,
     path: '',
     children: [
       {
@@ -12,7 +11,7 @@ const routes: Routes = [
         loadChildren: () => import('./recipes/list/list.module').then(m => m.ListModule)
       },
       {
-        path: 'recipedetail',
+        path: 'recipedetail/:id',
         loadChildren: () => import('./recipes/detail/detail.module').then(m => m.DetailModule)
       },
       {

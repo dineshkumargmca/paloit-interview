@@ -4,6 +4,7 @@ import { ListComponent } from './list.component';
 import { SharedModule } from '../../shared/shared.module';
 import { RouterModule, Routes } from '@angular/router';
 import { RecipeService } from '../recipe.service';
+
 const routes: Routes = [
   {
     path: '',

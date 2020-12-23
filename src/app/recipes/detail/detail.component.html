@@ -1,1 +1,40 @@
-<p>detail works!</p>
+<div class="loading p-text-center" *ngIf="loading; else receipeContent">
+    <p-progressSpinner></p-progressSpinner>
+</div>
+
+<ng-template #receipeContent>
+    <div class="recipeDetails" *ngIf="recipeDetail">
+        <div class="p-grid">
+            <div class="p-col-4">
+                <div class="recipeImg">
+                    <img [src]="recipeDetail.image" alt="recipeDetail.title" />
+                </div>
+            </div>
+            <div class="p-col-8">
+                <div class="p-mt-4 p-mb-4"> Serving : {{recipeDetail.servings}}</div>
+                <div class="p-mt-4 p-mb-4"> Ready in {{recipeDetail.readyInMinutes}} minutes</div>
+                <div class="p-mt-4 p-mb-4"> Health Score: {{recipeDetail.healthScore}}</div>
+                <div class="p-mt-4 p-mb-4"> Spoonacular score: {{recipeDetail.spoonacularScore}}</div>
+                <div class="p-mt-4 p-mb-4"> Price per serving: {{recipeDetail.pricePerServing}}</div>
+                <div class="p-mt-4 p-mb-4"> Vegetarian: {{recipeDetail.vegetarian ? 'Yes' : 'No'}}</div>
+                <div class="p-mt-4 p-mb-4"> Gluten free: {{recipeDetail.glutenFree ? 'Yes' : 'No'}}</div>
+            </div>
+        </div>
+        <div class="p-grid">
+            <div class="p-col-12" [innerHTML]="recipeDetail.summary"></div>
+            <div class="p-col-12" *ngIf="recipeDetail.winePairing">
+                <h3> Wine Pairing</h3>
+                <div *ngIf="recipeDetail.winePairing && recipeDetail.winePairing.pairingText">
+                    {{recipeDetail.winePairing.pairingText}}
+                </div>
+            </div>
+
+            <div class="p-col-12"
+                *ngIf="recipeDetail.extendedIngredients && recipeDetail.extendedIngredients.length > 0">
+                <h3>Ingredients</h3>
+                <div class="p-col-12" *ngFor="let ingredient of recipeDetail.extendedIngredients">
+                    {{ingredient.originalString}}</div>
+            </div>
+        </div>
+    </div>
+</ng-template>
